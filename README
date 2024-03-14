@@ -1,3 +1,6 @@
 To run this project:
 1. Create a new project from version control and put https://github.com/ChiChiFang/USDCNH.git in the URL section.
-2.
+2. Open Edit Configurations and add a local Tomcat server.
+3. Configure a USDCNH:war exploded artifact inside the deployment section of the Tomcat server.
+4. Run the project
+5. You can resume or stop the program from sending the rate by clicking on the buttons
