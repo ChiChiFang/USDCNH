@@ -1,0 +1,53 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Java后端WebSocket的Tomcat实现</title>   <script type="text/javascript">
+
+    var ws;
+    let active = true;
+
+    function init() {
+
+        // Connect to Web Socket.
+        ws = new WebSocket("ws://localhost:8080/get-rate");
+        // Set event handlers.
+        ws.onopen = function() {
+            document.getElementById("web").innerText=" opened"
+        };
+        ws.onmessage = function(e) {
+            document.getElementById("rate").innerText=e.data;
+        };
+        ws.onclose = function() {
+            document.getElementById("web").innerText=" closed";
+        };
+
+    }
+
+    function onResume() {
+        if (active===false){
+            init();
+            active=true
+        }
+    }
+
+    function onStop() {
+        active = false;
+        document.getElementById("web").innerText = " closed"
+        ws.close();
+    }
+
+</script>
+</head>
+<body onload="init()">
+
+    <Label> USD to HKD Rate: </Label>
+    <div id = "rate"> start steaming rate </div>
+    <br><br>
+    <p> Web Socket Status: </p>
+    <div id="web"> open </div>
+
+    <br><br>
+    <button id="Resume" type="button" onclick="onResume()">Resume</button>
+    <button id="close" type="button" onclick="onStop()">Stop</button>
+</body>
+</html>
