@@ -1,6 +1,5 @@
 package com.hsbc.usdcnh.server;
 
-import jdk.nashorn.internal.runtime.logging.Logger;
 import org.springframework.stereotype.Service;
 
 import javax.websocket.OnClose;
@@ -9,7 +8,6 @@ import javax.websocket.Session;
 import javax.websocket.server.ServerEndpoint;
 import java.io.IOException;
 
-@Logger
 @Service
 @ServerEndpoint("/get-rate")
 public class WebSocketServer {
