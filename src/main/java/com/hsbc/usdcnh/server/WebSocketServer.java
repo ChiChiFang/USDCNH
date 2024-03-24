@@ -45,6 +45,10 @@ public class WebSocketServer {
             session.getBasicRemote().sendText(message);
         }catch(IOException e){
             System.out.println(e.getMessage());
+        }catch(NullPointerException e){
+            System.out.println("Socket not connected");
+        }catch(IllegalStateException e){
+            System.out.println("Socket is closed, waiting for it to reconnect");
         }
     }
 }
